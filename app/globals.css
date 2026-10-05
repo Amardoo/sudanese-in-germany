@@ -1042,18 +1042,19 @@ progress::-moz-progress-bar {
   text-decoration-color: currentColor;
 }
 .article-table-wrap {
-  
-  margin-top: 22px ;
-  max-width: calc(100% - 32px);
+  margin-top: 22px;
   overflow-x: auto;
   border: 1px solid #dde7d5;
   border-radius: 8px;
   background: #ffffff;
+  box-sizing: border-box;
+  box-shadow: inset -12px 0 10px -10px rgba(0, 0, 0, 0.12);
+
 }
 .article-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 15px;
+  font-size: 14px;
   color: #425143;
 }
 .article-table th,
