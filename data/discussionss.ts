@@ -8,7 +8,7 @@ export const sampleDiscussions: Discussion[] = [
     id: 'curated-saudi-evisa-permanent-residence',
     community: 'travel',
    kind: 'question',
-   title: 'كيف تقدمت للحصول على  تأشيرة الكترونية سعودية  e-visa باقامة طالب',
+   title: 'كيف تقدمت للحصول على  تأشيرة الكترونية سعودية  E-visa باقامة طالب',
    body: 'كيف سارت الإجراءات. اذكر نوع الوثيقة وتاريخ التجربة فقط،.',
    createdAt: '2026-10-05T09:00:00Z',
    sample: true,
