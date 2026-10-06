@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = { title: 'الجمعيات' };
-
 export default function AssociationsPage() {
   return (
     <main className="shell page-heading">

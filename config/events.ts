@@ -1,7 +1,8 @@
 export const eventCategories = [
   { id: 'community', label: 'لقاءات المجتمع' },
   { id: 'learning', label: 'تعلم وورش' },
-  { id: 'culture', label: 'ثقافة' },
+  { id: 'culture', label: 'ثقافة' },  
+  { id: 'music', label: 'موسيقى' },
 ];
 export const calendarConfig = {
   timeZone: 'Europe/Berlin',

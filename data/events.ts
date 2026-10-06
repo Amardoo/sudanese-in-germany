@@ -7,6 +7,7 @@ export interface CommunityEvent {
   category: string;
   location: string;
   description: string;
+  url: string;
   sample?: boolean;
 }
 
@@ -24,6 +25,7 @@ export const events: CommunityEvent[] = [
     description:
       'مثال لفعالية تجمع الأعضاء للتعارف وتبادل تجارب البداية في ألمانيا. هذا موعد توضيحي لتجربة التقويم، وليس لقاءً معلناً.',
     sample: true,
+    url: 'https://example.com/sample-welcome',
   },
   {
     id: 'sample-language',
@@ -36,6 +38,7 @@ export const events: CommunityEvent[] = [
     description:
       'مثال لورشة ممارسة اللغة في مواقف الحياة اليومية. تظهر هنا تفاصيل الفعالية وطريقة حضورها بعد اعتماد الموعد.',
     sample: true,
+    url: 'https://example.com/sample-language',
   },
   {
     id: 'sample-culture',
@@ -48,5 +51,18 @@ export const events: CommunityEvent[] = [
     description:
       'مثال لأمسية ثقافية ومشاركة الحكايات والتجارب. لا توجد حجوزات أو مشاركة فعلية لهذا المثال.',
     sample: true,
+    url: 'https://example.com/sample-culture',
+  },
+  {
+    id: 'concert-sudanese',
+    title: 'حفل غنائي سوداني',
+    date: '2026-10-17',
+    startTime: '16:00',
+    endTime: '23:00',
+    category: 'music',
+    location: ' قاعة الباليون هانوفر Lister Meile 4, 30161 Hannover',
+    description: 'امسية غنائية تحيها المطربه ايمان الشريف.',
+    sample: false,
+    url: 'https://www.instagram.com/p/DdgfQ0fNVTO/',
   },
 ];

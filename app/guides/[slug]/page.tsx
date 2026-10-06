@@ -92,13 +92,34 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                       </tr>
                     </thead>
                     <tbody>
-                      {s.table.rows.map((row, rowIndex) => (
-                        <tr key={`${rowIndex}-${row[0]}`}>
-                          {row.map((cell, cellIndex) => (
-                            <td key={`${cellIndex}-${cell}`}>{cell}</td>
-                          ))}
-                        </tr>
-                      ))}
+                        {s.table.rows.map((row, rowIndex) => (
+                      <tr key={`${rowIndex}-${row[0]}`}>
+                        {row.map((cell, cellIndex) => {
+                          const link = s.externalLinks?.find(
+                            (item) => item.term === cell
+                          );
+
+                          return (
+                            <td key={`${cellIndex}-${cell}`}>
+                              {link ? (
+                                <a
+                                  href={link.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="table-link"
+                                >
+                                  {cell}
+                                </a>
+
+                              ) : (
+                                cell
+                              )}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+
                     </tbody>
                   </table>
                 </div>

@@ -1073,6 +1073,18 @@ progress::-moz-progress-bar {
 .article-table tr:last-child td {
   border-bottom: 0;
 }
+
+.table-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.table-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
 .checklist {
   padding: 18px 22px;
   list-style: none;

@@ -63,7 +63,7 @@ export default async function Home() {
               </div>
               <div>
                 <span>02</span>
-                <span>اكتشف أدلة مرتبطة بخطواتك</span>
+                <span>اكتشف مقالات مرتبطة بخطواتك</span>
               </div>
               <div>
                 <span>03</span>
