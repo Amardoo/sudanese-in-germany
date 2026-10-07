@@ -3,6 +3,6 @@ export const navigation = [
   { href: '/guides', label: 'المقالات' },
   { href: '/community', label: 'المجتمعات' },
   { href: '/events', label: 'الفعاليات' },
-  { href: '/dashboard', label: 'رحلتي' },
+  { href: '/dashboard', label: 'مساري' },
   { href: '/account', label: 'حسابي' },
 ];

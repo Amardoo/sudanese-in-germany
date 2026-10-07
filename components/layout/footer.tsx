@@ -8,7 +8,7 @@ export function Footer() {
         <p>بدايات مختلفة. مجتمع واحد.</p>
         <div>
           <Link href="/guides">استكشف الأدلة</Link>
-          <Link href="/dashboard">رحلتي في ألمانيا</Link>
+          <Link href="/dashboard">مساري في ألمانيا</Link>
         </div>
         <small dir="ltr">© {new Date().getFullYear()} Sudanese in Germany</small>
       </div>

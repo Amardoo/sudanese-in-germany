@@ -125,10 +125,10 @@ export default async function Home() {
           </span>
           <div>
             <h2>المعلومة بداية. الخطوة بتعمل الفرق.</h2>
-            <p>اجمع خطواتك في «رحلتي»، وارجع لها كل ما تحتاج.</p>
+            <p>اجمع خطواتك في «مساري»، وارجع لها كل ما تحتاج.</p>
           </div>
           <Link className="button" href="/dashboard">
-            افتح رحلتي <ArrowLeft size={19} />
+            تصفح مساري <ArrowLeft size={19} />
           </Link>
         </div>
       </section>

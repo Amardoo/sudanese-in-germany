@@ -17,10 +17,10 @@ test('all journey steps and guides reference existing data', () => {
 });
 test('completion is reversible and isolated by path', () => {
   const a = toggleStep(emptyProgress(), 'student', 'choose');
-  const b = toggleStep(a, 'doctor', 'authority');
+  const b = toggleStep(a, 'doctor', 'state');
   assert.deepEqual(b.completed.student, ['choose']);
   assert.deepEqual(toggleStep(b, 'student', 'choose').completed.student, []);
-  assert.deepEqual(b.completed.doctor, ['authority']);
+  assert.deepEqual(b.completed.doctor, ['state']);
   assert.deepEqual(toggleStep(b, 'student', 'nonexistent'), b);
 });
 test('storage recovers from malformed and stale values', () => {

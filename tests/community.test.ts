@@ -6,7 +6,11 @@ test('community storage rejects malformed entries and unknown categories', () =>
   const state = initialCommunity();
   state.posts.push({ ...state.posts[0], id: 'bad', community: 'not-a-group' });
   state.posts.push({ ...state.posts[0] });
-  assert.equal(parseCommunity(JSON.stringify(state)).posts.length, 4);
+  // عدد المنشورات بعد التنقية = عدد المنشورات التجريبية الصالحة (مستقل عن حجم البيانات)
+  assert.equal(
+    parseCommunity(JSON.stringify(state)).posts.length,
+    initialCommunity().posts.length,
+  );
 });
 test('new topics validate trimmed content and lengths', () => {
   assert.throws(() =>
