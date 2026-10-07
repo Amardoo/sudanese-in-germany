@@ -15,6 +15,7 @@ export interface Journey {
   color: string;
   steps: JourneyStep[];
 }
+
 export interface Guide {
   slug: string;
   title: string;
@@ -22,16 +23,42 @@ export interface Guide {
   category: string;
   categories?: string[];
   minutes: number;
+
   sections: {
     title: string;
     body: string;
-    internalLinks?: { term: string; href: string }[];
-    externalLinks?: { term: string; href: string }[];
-    table?: { headers: string[]; rows: string[][] };
+
+    internalLinks?: {
+      term: string;
+      href: string;
+    }[];
+
+    externalLinks?: {
+      term: string;
+      href: string;
+    }[];
+
+    table?: {
+      headers: string[];
+      rows: string[][];
+    };
+
     checklist?: string[];
   }[];
-  source: { label: string; url: string };
+
+  attachments?: {
+    type: 'word' | 'pdf';
+    label: string;
+    file: string;
+  }[];
+
+  source: {
+    label: string;
+    url: string;
+  };
+
   origin?: 'starter' | 'wordpress-archive';
+
 }
 export interface ProgressState {
   version: 1;

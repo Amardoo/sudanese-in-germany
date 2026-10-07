@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { GuideBrowser } from '@/components/guides/guide-browser';
 import { contentRepository } from '@/lib/content';
 
+
 export const metadata: Metadata = { title: 'المقالات' };
 
 export default async function GuidesPage() {

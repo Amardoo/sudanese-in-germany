@@ -136,6 +136,43 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               )}
             </section>
           ))}
+
+                    
+          {guide.attachments && guide.attachments.length > 0 && (
+            <div className="article-attachments">
+              <h2>ملفات مرفقة</h2>
+
+                           <div className="attachment-list">
+                {guide.attachments.map((attachment) => (
+                  <a
+                    key={attachment.file}
+                    href={attachment.file}
+                    download
+                    className="attachment-item"
+                  >
+                    <span className="attachment-icon">
+                      {attachment.type === 'word' ? '📝' : '📄'}
+                    </span>
+
+                    <span className="attachment-info">
+                      <strong>{attachment.label}</strong>
+                      <small>
+                        {attachment.type === 'word' ? ' Word file' : ' PDF file'}
+                      </small>
+                    </span>
+
+                    <span className="attachment-download">
+                      
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        
+        <section>
+         </section>
+
           <div className="source-box">
             <h2>{isOwnSiteSource ? 'عن هذا المقال' : 'المصدر'}</h2>
             <p>

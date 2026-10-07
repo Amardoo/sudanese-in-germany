@@ -109,28 +109,43 @@ export const journeys: Journey[] = [
     steps: [
       {
         id: 'goal',
-        title: 'تحديد المجال المستهدف',
-        description: 'اختر المسميات الوظيفية التي تناسب خبرتك.',
+        title: 'قبل ان تبحث  ماذا يجب أن تعرف؟',
+        description: 'فهم العوامل التي تؤثر في فرصك يساعدك على الاستعداد والبحث بطريقة أفضل.    ',
         guide: 'job-search',
       },
       {
-        id: 'recognition',
-        title: 'التحقق من وضع المؤهل',
-        description: 'تحقّق من متطلبات الاعتراف لمهنتك.',
-        guide: 'recognition',
+        id: 'guides',
+        title: ' كيف تبحث عن عمل في ألمانيا؟ ',
+        description: 'دليل عملي للبحث عن عمل في ألمانيا، من اختيار الوظيفة وقراءة إعلانات التوظيف    ',
+        guide: 'article-178',
       },
+      {
+        id: 'worker',
+        title: ' اين تبحث عن عمل في المانيا؟ ',
+        description: 'تعرف على أهم المواقع والمنصات التي يمكنك استخدامها للبحث عن عمل في ألمانيا',
+        guide: 'article-1200',
+      },
+     
       {
         id: 'cv',
         title: 'تجهيز السيرة الذاتية',
         description: 'أبرز الخبرة والمهارات المرتبطة بكل وظيفة.',
-        guide: 'job-search',
+        guide: 'article-1481',
       },
       {
-        id: 'apply',
-        title: 'تنظيم طلبات التوظيف',
-        description: 'تابع الشركات والطلبات والمواعيد في قائمة واحدة.',
-        guide: 'job-search',
+        id: 'cover-letter',
+        title: 'تجهيز خطاب الدافع',
+        description: 'أبرز الخبرة والمهارات المرتبطة بكل وظيفة.',
+        guide: 'article-1477',
       },
+      {
+
+        id: 'interview',
+        title: 'التحضير للمقابلة',
+        description: 'تعرف على أسئلة المقابلة الشائعة وكيفية التحضير لها.',
+        guide: 'article-1219',
+      }
+
     ],
   },
   {
@@ -141,17 +156,18 @@ export const journeys: Journey[] = [
     icon: 'newcomer',
     color: 'green',
     steps: [
-      {
-        id: 'housing',
-        title: 'تنظيم البحث عن السكن',
-        description: 'حدّد ميزانيتك والمناطق المناسبة وجهّز الأسئلة.',
-        guide: 'housing',
-      },
+      
       {
         id: 'arrival',
-        title: 'ترتيب مواعيد البداية',
-        description: 'راجع تعليمات مدينتك وأنشئ قائمة مواعيدك.',
+        title: 'أول أيامك في ألمانيا',
+        description: 'جهّز قائمة السكن والمواعيد والخطوات الأولى.',
         guide: 'arrival',
+      },
+      {
+        id: 'housing',
+        title: ' البحث عن السكن',
+        description: 'حدّد ميزانيتك والمناطق المناسبة وجهّز الأسئلة.',
+        guide: 'housing',
       },
       {
         id: 'language',
@@ -160,10 +176,16 @@ export const journeys: Journey[] = [
         guide: 'german',
       },
       {
-        id: 'settle',
+        id: 'monthly-expenses-germany',
         title: 'تنظيم الحياة اليومية',
-        description: 'احتفظ بملفات السكن والمراسلات والمواعيد.',
-        guide: 'arrival',
+        description: ' المصاريف الشهرية وتكلفة المعيشة في ألمانيا .',
+        guide: 'monthly-expenses-germany',
+      },
+      {
+        id: 'healthcare',
+        title: 'التأمين الصحي في ألمانيا',
+        description: 'أنواع التأمين الصحي، التغطية، والتسجيل.',
+        guide: 'health-insurance-germany-students',
       },
     ],
   },
