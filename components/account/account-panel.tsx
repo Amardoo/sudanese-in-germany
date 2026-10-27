@@ -146,10 +146,15 @@ export function AccountPanel() {
                   const { error } = await getSupabase().auth.signInWithOtp({
                     email: email.trim(),
                   });
+                  
                   if (error) {
-                    setMessage(
-                      'تعذّر إرسال الرمز. انتظر قليلاً وتحقق من البريد وإعدادات الخدمة.',
-                    );
+                    console.error('Supabase OTP error:', {
+                      message: error.message,
+                      status: error.status,
+                      code: error.code,
+                    });
+
+                    setMessage(`خطأ Supabase: ${error.message} (status: ${error.status})`);
                   } else {
                     setOtpSent(true);
                     setMessage('تم إرسال الرمز. راجع بريدك وأدخل الرمز المكوّن من 6 أرقام.');
