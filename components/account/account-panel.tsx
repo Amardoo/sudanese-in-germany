@@ -4,13 +4,17 @@ import { useEffect, useState } from 'react';
 import type { User } from '@supabase/supabase-js';
 import { Mail, UserRound } from 'lucide-react';
 import { getSupabase, supabaseConfigured } from '@/lib/supabase/client';
+
 export function AccountPanel() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(supabaseConfigured);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [otp, setOtp] = useState('');
+  const [otpSent, setOtpSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
+
   useEffect(() => {
     if (!supabaseConfigured) return;
     let active = true;
@@ -40,6 +44,7 @@ export function AccountPanel() {
       subscription.unsubscribe();
     };
   }, []);
+
   if (!supabaseConfigured)
     return (
       <div className="account-panel">
@@ -54,7 +59,9 @@ export function AccountPanel() {
         </Link>
       </div>
     );
+
   if (loading) return <p role="status">جاري التحقق من الحساب…</p>;
+
   return (
     <div className="account-panel">
       <UserRound size={32} />
@@ -127,45 +134,110 @@ export function AccountPanel() {
       ) : (
         <>
           <h2>حساب واحد، ونقاش يجمعنا</h2>
-          <p>أدخل بريدك لإرسال رابط دخول آمن. يُنشأ حسابك تلقائياً عند أول دخول.</p>
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              setBusy(true);
-              try {
-                const { error } = await getSupabase().auth.signInWithOtp({
-                  email: email.trim(),
-                  options: { emailRedirectTo: `${window.location.origin}/account` },
-                });
-                setMessage(
-                  error
-                    ? 'تعذّر إرسال الرابط. انتظر قليلاً وتحقق من البريد وإعدادات الخدمة.'
-                    : 'تم طلب رابط الدخول. راجع بريدك ومجلد الرسائل غير المرغوبة.',
-                );
-              } catch {
-                setMessage('تعذّر الاتصال. حاول مرة أخرى.');
-              } finally {
-                setBusy(false);
-              }
-            }}
-          >
-            <label>
-              البريد الإلكتروني
-              <input
-                type="email"
-                dir="ltr"
-                autoComplete="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="name@example.com"
-              />
-            </label>
-            <button className="button" disabled={busy}>
-              <Mail size={18} />
-              {busy ? 'جاري الإرسال…' : 'إرسال رابط الدخول'}
-            </button>
-          </form>
+          <p>أدخل بريدك لإرسال رمز دخول آمن. يُنشأ حسابك تلقائياً عند أول دخول.</p>
+
+          {!otpSent ? (
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setBusy(true);
+                setMessage('');
+                try {
+                  const { error } = await getSupabase().auth.signInWithOtp({
+                    email: email.trim(),
+                  });
+                  if (error) {
+                    setMessage(
+                      'تعذّر إرسال الرمز. انتظر قليلاً وتحقق من البريد وإعدادات الخدمة.',
+                    );
+                  } else {
+                    setOtpSent(true);
+                    setMessage('تم إرسال الرمز. راجع بريدك وأدخل الرمز المكوّن من 6 أرقام.');
+                  }
+                } catch {
+                  setMessage('تعذّر الاتصال. حاول مرة أخرى.');
+                } finally {
+                  setBusy(false);
+                }
+              }}
+            >
+              <label>
+                البريد الإلكتروني
+                <input
+                  type="email"
+                  dir="ltr"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="name@example.com"
+                />
+              </label>
+              <button className="button" disabled={busy}>
+                <Mail size={18} />
+                {busy ? 'جاري الإرسال…' : 'إرسال رمز الدخول'}
+              </button>
+            </form>
+          ) : (
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setBusy(true);
+                setMessage('');
+                try {
+                  const { data, error } = await getSupabase().auth.verifyOtp({
+                    email: email.trim(),
+                    token: otp.trim(),
+                    type: 'email',
+                  });
+                  if (error) {
+                    setMessage('الرمز غير صحيح أو منتهي الصلاحية. حاول مرة أخرى.');
+                  } else {
+                    setUser(data.user);
+                    setOtpSent(false);
+                    setOtp('');
+                    setMessage('تم تسجيل الدخول بنجاح.');
+                  }
+                } catch {
+                  setMessage('تعذّر الاتصال. حاول مرة أخرى.');
+                } finally {
+                  setBusy(false);
+                }
+              }}
+            >
+              <p dir="ltr" className="otp-hint">
+                {email}
+              </p>
+              <label>
+                رمز التحقق
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  autoComplete="one-time-code"
+                  required
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  placeholder="123456"
+                  dir="ltr"
+                />
+              </label>
+              <button className="button" disabled={busy}>
+                {busy ? 'جاري التحقق…' : 'تأكيد الرمز وتسجيل الدخول'}
+              </button>
+              <button
+                type="button"
+                className="text-button"
+                disabled={busy}
+                onClick={() => {
+                  setOtpSent(false);
+                  setOtp('');
+                  setMessage('');
+                }}
+              >
+                تغيير البريد الإلكتروني
+              </button>
+            </form>
+          )}
         </>
       )}
       <p role="status">{message}</p>
