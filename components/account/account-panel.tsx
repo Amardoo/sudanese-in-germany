@@ -92,7 +92,7 @@ export function AccountPanel() {
             }}
           >
             <label>
-              اسم العرض في المجتمع
+              اكتب اسم المستخدم 
               <input
                 required
                 minLength={2}
@@ -103,7 +103,7 @@ export function AccountPanel() {
               />
             </label>
             <button className="button" disabled={busy}>
-              حفظ اسم العرض
+              حفظ اسم المستخدم
             </button>
           </form>
           <Link className="button" href="/community">
