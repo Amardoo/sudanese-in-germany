@@ -66,7 +66,7 @@ export default function PrivacyPage() {
         <h2>5. التواصل</h2>
         <p>
           لأي استفسار حول الخصوصية راسلنا على{' '}
-          <a href="mailto:[privacy@dsudaneseingermany.de]" dir="ltr">[privacy@dsudaneseingermany.de]</a>.
+          <a href="mailto:privacy@dsudaneseingermany.de" dir="ltr">[privacy@dsudaneseingermany.de]</a>.
         </p>
 
         <p className="legal-updated">آخر تحديث: أكتوبر 2026</p>
