@@ -147,13 +147,9 @@ export function AccountPanel() {
                     email: email.trim(),
                   });
                   if (error) {
-  console.error('Supabase OTP error:', {
-    message: error.message,
-    status: error.status,
-    code: error.code,
-  });
-
- 
+                    setMessage(
+                      'تعذّر إرسال الرمز. انتظر قليلاً وتحقق من البريد وإعدادات الخدمة.',
+                    );
                   } else {
                     setOtpSent(true);
                     setMessage('تم إرسال الرمز. راجع بريدك وأدخل الرمز المكوّن من 6 أرقام.');
