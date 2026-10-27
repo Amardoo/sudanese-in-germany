@@ -1261,6 +1261,268 @@ const starterGuides: Guide[] = [
       url: 'https://www.goethe.de/en/spr/ueb.html',
     },
   },
+      {
+    slug: 'german-for-doctors',
+    category: 'language',
+    title: 'كيف تتعلم اللغة الألمانية كطبيب؟ Deutsch für Ärzte',
+    description:
+    'خطة عملية لتعلم الألمانية للأطباء، من اللغة العامة إلى اللغة الطبية، مع مصادر للتدرب على المحادثة مع المرضى، Anamnese، Arztbrief، Fachsprache والاستماع من المسلسلات والتقارير الطبية الألمانية.',
+    minutes: 9,
+    sections: [
+    {
+    title: 'لا تتعلم الألمانية كطبيب بنفس طريقة الجميع',
+    body: 'إذا كنت طبيبًا وتريد العمل في ألمانيا، فتعلم الألمانية لا يتوقف عند B2 أو C1 العام. بعد بناء الأساس اللغوي، تحتاج إلى الانتقال تدريجيًا إلى Deutsch für Ärzte وmedizinische Fachsprache. الهدف ليس فقط فهم الكلمات الطبية، بل أن تستطيع أخذ Anamnese، شرح التشخيص للمريض، التحدث مع Kollegen وPflegepersonal، وكتابة Arztbrief بطريقة واضحة ومهنية.',
+    checklist: [
+    'حدد مستواك الحالي في الألمانية',
+    'ثبّت أساس اللغة العامة قبل التركيز الكامل على Fachsprache',
+    'ابدأ بتعلم المصطلحات الطبية داخل جمل ومواقف حقيقية',
+    'تدرب على Arzt-Patient-Gespräch',
+    'تدرب على Arzt-Arzt-Gespräch',
+    'ابدأ مبكرًا في تعلم كتابة Arztbrief',
+    'إذا كنت تستعد للمعادلة، تعرف على متطلبات Fachsprachprüfung في ولايتك',
+    ],
+    },
+    {
+    title: 'خطة من A1 إلى Fachsprache',
+    body: 'لا تحتاج إلى حفظ مئات الكلمات الطبية منذ البداية. الأفضل أن تبني اللغة على مراحل، ثم تنتقل إلى اللغة الطبية عندما يصبح لديك أساس جيد في الألمانية.',
+    table: {
+    headers: ['المستوى', 'الهدف للطبيب', 'ماذا تركز؟'],
+    rows: [
+    [
+    'A1',
+    'أساس اللغة',
+    'التعريف بالنفس، الأرقام، الوقت، المواعيد والجمل اليومية',
+    ],
+    [
+    'A2',
+    'التعامل اليومي',
+    'السكن، الدوائر، المواصلات، التواصل البسيط في الحياة اليومية',
+    ],
+    [
+    'B1',
+    'التواصل الأساسي',
+    'شرح المشاكل، المحادثات اليومية، كتابة الرسائل وفهم النصوص البسيطة',
+    ],
+    [
+    'B2',
+    'بداية اللغة المهنية',
+    'Anamnese، Symptome، Untersuchung، Befunde والتواصل مع المرضى',
+    ],
+    [
+    'B2-C1 Medizin',
+    'العمل الطبي',
+    'Arzt-Patient-Gespräch، Arzt-Arzt-Gespräch، Arztbrief وmedizinische Fachsprache',
+    ],
+    [
+    'C1',
+    'تواصل طبي متقدم',
+    'النقاشات الطبية، العروض، التقارير، شرح الحالات والمصطلحات الدقيقة',
+    ],
+    ],
+    },
+    },
+    {
+    title: 'ماذا يجب أن يتعلم الطبيب تحديدًا؟',
+    body: 'بعد الوصول إلى مستوى مناسب في اللغة العامة، لا تجعل دراستك قائمة كلمات طبية فقط. تعلم اللغة من خلال مواقف تحدث فعلًا في المستشفى أو العيادة. هذا يجعل الكلمات أسهل في الحفظ ويجهزك مباشرة للعمل وفحص اللغة الطبية.',
+    checklist: [
+    'Anamnese: أخذ التاريخ المرضي من المريض',
+    'Leitsymptom: تحديد العرض الرئيسي',
+    'Schmerzen: السؤال عن مكان الألم وشدته ومدته',
+    'Vorerkrankungen: الأمراض السابقة',
+    'Medikamente: الأدوية والجرعات',
+    'Allergien: الحساسية',
+    'Familienanamnese: التاريخ المرضي العائلي',
+    'Sozialanamnese: التاريخ الاجتماعي',
+    'Körperliche Untersuchung: وصف الفحص السريري',
+    'Befunde: وصف النتائج',
+    'Diagnose und Differentialdiagnose',
+    'Therapie und Aufklärung',
+    'Arztbrief وEntlassungsbrief',
+    ],
+    },
+    {
+    title: 'ركز على Arzt-Patient-Gespräch',
+    body: 'من أهم المهارات للطبيب في ألمانيا القدرة على إجراء محادثة طبيعية مع المريض. لا تحفظ أسئلة منفصلة فقط، بل تدرب على سيناريو كامل من الترحيب بالمريض إلى أخذ Anamnese ثم شرح التشخيص والخطة العلاجية. في اختبارات اللغة الطبية يتم تقييم التواصل في مواقف مثل Arzt-Patient-Gespräch وArzt-Arzt-Gespräch والتواصل مع Angehörige.',
+    checklist: [
+    'ابدأ بالتحية والتعريف بنفسك',
+    'اطلب من المريض وصف المشكلة بطريقته',
+    'استخدم أسئلة قصيرة وواضحة',
+    'تأكد من فهم المريض للمعلومات',
+    'تجنب المصطلحات الطبية المعقدة عندما تتحدث مع المريض',
+    'تدرب على شرح التشخيص والعلاج بلغة يفهمها المريض',
+    'في النهاية لخّص الخطة العلاجية وتأكد من عدم وجود أسئلة',
+    ],
+    externalLinks: [
+    {
+    term: 'اختبارات اللغة الطبية',
+    href: 'https://www.telc.net/sprachpruefungen/zertifikatspruefung/deutsch/telc-deutsch-b2-medizin-zugangspruefung/',
+    },
+    {
+    term: 'B2-C1 Medizin',
+    href: 'https://www.telc.net/sprachpruefungen/zertifikatspruefung/deutsch/telc-deutsch-b2c1-medizin/',
+    },
+    ],
+    },
+    {
+    title: 'تعلم Arztbrief والكتابة الطبية',
+    body: 'الكتابة الطبية مهارة مختلفة عن الكتابة بالألمانية العامة. الطبيب يحتاج إلى كتابة Informationen عن حالة المريض بطريقة منظمة ومختصرة، ولذلك من المفيد أن تتعلم بناء Arztbrief وتتمرن على صياغة Befunde وDiagnose وTherapie وVerlauf.',
+    checklist: [
+    'تعلم ترتيب المعلومات في Arztbrief',
+    'تدرب على كتابة Anamnese',
+    'اكتب Befund بشكل مختصر وواضح',
+    'تدرب على صياغة Diagnose وDifferentialdiagnose',
+    'اكتب Therapie وEmpfehlungen',
+    'تدرب على تحويل ملاحظات قصيرة إلى نص طبي منظم',
+    'راجع النص بحثًا عن الأخطاء اللغوية والمصطلحات غير المناسبة',
+    ],
+    externalLinks: [
+    {
+    term: 'Arztbrief',
+    href: 'https://www.telc.net/lehrmaterialien/deutsch-fuer-den-beruf/deutsch-fuer-medizin-und-pflege/',
+    },
+    {
+    term: 'Informationen ',
+    href: 'https://shop.telc.net/de_DE/trainingseinheiten-deutsch-b2-c1-teilnehmerbuch.html',
+    },
+    ],
+    },
+    {
+    title: 'أفضل طريقة لتطوير الاستماع: شاهد الطب بالألمانية',
+    body: 'بالنسبة للطبيب، الاستماع مهم جدًا لأن اللغة التي تسمعها في المستشفى تختلف عن لغة الكتب. شاهد محتوى طبي ألماني بانتظام، وحاول أولًا فهم المعنى العام، ثم أعد المقطع وسجل الكلمات والجمل الطبية التي سمعتها. ZDF يوفر قسمًا للصحة يحتوي على تقارير ووثائقيات ومحتوى طبي، كما توجد مسلسلات طبية مثل Die Lebensretter von Murnau, Bettys Diagnose, Der Bergdoktor وDr. Nice يمكن استخدامها للتدرب على الاستماع إلى اللغة الألمانية في سياق طبي.',
+    checklist: [
+    'شاهد الحلقة أول مرة لفهم القصة بدون ترجمة',
+    'في المرة الثانية ركز على الكلمات الطبية',
+    'اكتب 5 إلى 10 جمل مفيدة من الحلقة',
+    'كرر الجمل بصوت مرتفع',
+    'حاول استخدام الجمل في Anamnese أو Arzt-Patient-Gespräch',
+    'لا تحاول ترجمة كل كلمة؛ ركز على فهم السياق',
+    'Der Bergdoktor'
+    ],
+    
+  
+
+    externalLinks: [
+    {
+    term: 'ZDF',
+    href: 'https://www.zdf.de/gesundheit',
+    },
+    {
+    term: 'Der Bergdoktor',
+    href: 'https://www.zdf.de/serien/der-bergdoktor-106',
+    },
+    {
+    term: 'Dr. Nice',
+    href: 'https://www.zdf.de/serien/dr-nice-100',
+    },
+    {
+    term: 'Die Lebensretter von Murnau',
+    href: 'https://www.zdf.de/reportagen/die-lebensretter-von-murnau-100',
+    
+    },
+    {
+    term: 'Bettys Diagnose',
+    href: 'https://www.zdf.de/serien/bettys-diagnose-106',
+    },
+    ],
+    },
+    {
+    title: 'مصادر مجانية للاستماع وتعلم المصطلحات الطبية',
+    body: 'استخدم مصدرًا أساسيًا لتعلم اللغة مثل DW Learn German, VHS Lernportal, DW deutschtrainer, telc – Medizin und Pflege, Goethe Übungen,  ثم أضف مصدرًا طبيًا للاستماع والتدرب. بالنسبة للمبتدئين، يمكن استخدام Deutschtrainer لتعلم مفردات ومواقف مرتبطة بالطبيب. وبعد الوصول إلى B2، يمكنك الانتقال إلى مواد Fachsprache المخصصة للأطباء.',
+    externalLinks: [
+    {
+    term: 'DW Learn German',
+    href: 'https://learngerman.dw.com/',
+    },
+    {
+    term: 'DW Deutschtrainer',
+    href: 'https://static.dw.com/downloads/49374719/Deutschtrainer_035_Beim_Arzt_DEU.pdf',
+    },
+    {
+    term: 'Goethe Übungen',
+    href: 'https://www.goethe.de/en/spr/ueb.html',
+    },
+    {
+    term: 'VHS Lernportal',
+    href: 'https://www.vhs-lernportal.de/',
+    },
+    {
+    term: 'telc – Medizin und Pflege',
+    href: 'https://www.telc.net/lehrmaterialien/deutsch-fuer-den-beruf/deutsch-fuer-medizin-und-pflege/',
+    },
+    ],
+    },
+    {
+    title: 'هل تحتاج إلى دورة خاصة بالأطباء؟',
+    body: 'إذا وصلت إلى telc Online Training Deutsch B2-C1 Medizin, telc Medizin وأصبحت قريبًا من العمل الطبي أو Fachsprachprüfung، فالدورة المتخصصة للأطباء قد تكون أكثر فائدة من الاستمرار في دورة ألمانية عامة فقط. مواد telc الطبية، على سبيل المثال، مصممة للأطباء الدوليين وتغطي التواصل مع المرضى والزملاء والتمريض والأقارب، إضافة إلى Anamnese وArztbrief ومهارات الاستماع والقراءة والكتابة.',
+    table: {
+    headers: ['الخيار', 'المناسب له', 'الهدف'],
+    rows: [
+    [
+    'دورة ألمانية عامة',
+    'A1-B1/B2',
+    'بناء أساس اللغة اليومية',
+    ],
+    [
+    'B2 Beruf',
+    'من وصل إلى مستوى متوسط',
+    'الانتقال إلى اللغة المهنية',
+    ],
+    [
+    'Deutsch B2-C1 Medizin',
+    'الأطباء الدوليون',
+    'Fachsprache والتواصل الطبي',
+    ],
+    [
+    'Fachsprache Prüfungskurs',
+    'من لديه امتحان قريب',
+    'التدرب على شكل الامتحان والمواقف الطبية',
+    ],
+    [
+    'Selbststudium + Serien',
+    'من لديه وقت محدود',
+    'الاستماع والمفردات والتعرض اليومي للغة',
+    ],
+    ],
+    },
+    externalLinks: [
+    {
+    term: 'telc Medizin ',
+    href: 'https://www.telc.net/lehrmaterialien/deutsch-fuer-den-beruf/deutsch-fuer-medizin-und-pflege/',
+    },
+    {
+    term: 'telc Online Training Deutsch B2-C1 Medizin',
+    href: 'https://shop.telc.net/de_DE/online-training-deutsch-medizin-3-monate.html',
+    },
+    ],
+    },
+    {
+    title: 'روتين يومي للطبيب',
+    body: 'بدل دراسة اللغة لساعات قليلة ثم التوقف عدة أيام، حاول جعل الألمانية جزءًا من يومك. ساعة واحدة يوميًا بشكل منتظم يمكن أن تكون أكثر فائدة من جلسة طويلة مرة واحدة في الأسبوع.',
+    table: {
+    headers: ['المدة', 'النشاط'],
+    rows: [
+    ['15 دقيقة', 'مراجعة المصطلحات والجمل الطبية'],
+    ['15 دقيقة', 'استماع إلى فيديو أو تقرير ألماني'],
+    ['15 دقيقة', 'التحدث بصوت مرتفع أو محاكاة Anamnese'],
+    ['15 دقيقة', 'قراءة نص طبي أو كتابة فقرة قصيرة'],
+    ],
+    },
+    checklist: [
+    'تعلم الجمل وليس الكلمات فقط',
+    'كرر الكلمات بصوت مرتفع',
+    'سجل صوتك أثناء محاكاة مقابلة مع مريض',
+    'شاهد محتوى ألماني طبي بانتظام',
+    'اكتب Arztbrief قصيرًا مرة أو مرتين أسبوعيًا',
+    'احتفظ بدفتر خاص بالمصطلحات الطبية والجمل الجاهزة',
+    ],
+    },
+    ],
+    source: {
+    label: 'telc – Deutsch für Medizin und Pflege',
+    url: 'https://www.telc.net/lehrmaterialien/deutsch-fuer-den-beruf/deutsch-fuer-medizin-und-pflege/',
+    },
+    },
+
   {
   slug: 'arrival',
   category: 'residence',

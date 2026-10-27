@@ -8,11 +8,13 @@ export function DiscussionCard({
   onChange,
   onDelete,
   shared = false,
+  readOnly = false,
 }: {
   post: Discussion;
   onChange: (post: Discussion) => void | boolean | Promise<boolean>;
   onDelete: () => void;
   shared?: boolean;
+  readOnly?: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
   const [reply, setReply] = useState('');
@@ -34,12 +36,14 @@ export function DiscussionCard({
       <span className="discussion-community">
         {communities.find((c) => c.id === post.community)?.title}
       </span>
-      <h2>{post.title}</h2>
+      <h3>{post.title}</h3>
       <p className="discussion-body">{post.body}</p>
       <div className="discussion-actions">
         <button
           aria-pressed={post.liked}
           aria-label={`إعجاب: ${post.title}`}
+          disabled={readOnly}
+          title={readOnly ? 'سجّل الدخول للتفاعل' : undefined}
           onClick={() => onChange({ ...post, liked: !post.liked })}
         >
           <Heart size={18} fill={post.liked ? 'currentColor' : 'none'} />
@@ -50,7 +54,7 @@ export function DiscussionCard({
           <MessageCircle size={18} />
           {post.replies.length} ردود
         </button>
-        {!post.sample && (!shared || post.mine) && (
+        {!readOnly && !post.sample && (!shared || post.mine) && (
           <button className="delete-action" onClick={() => setConfirm(!confirm)}>
             <Trash2 size={16} />
             حذف الموضوع
@@ -68,7 +72,7 @@ export function DiscussionCard({
       )}
       {expanded && (
         <div className="reply-panel">
-          <h3>الردود</h3>
+          <h4>الردود</h4>
           {!post.replies.length && <p>لسه ما في ردود. أضف أول رد.</p>}
           {post.replies.map((r) => (
             <div className="reply" key={r.id}>
@@ -76,7 +80,7 @@ export function DiscussionCard({
                 {shared ? r.author : 'أنت'} <small>· {shared ? 'رد' : 'رد محلي'}</small>
               </strong>
               <p>{r.body}</p>
-              {(!shared || r.mine) && (
+              {!readOnly && (!shared || r.mine) && (
                 <button
                   aria-label={`حذف الرد: ${r.body.slice(0, 30)}`}
                   onClick={() =>
@@ -88,35 +92,45 @@ export function DiscussionCard({
               )}
             </div>
           ))}
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              const body = reply.trim();
-              if (!body) return;
-              const saved = await onChange({
-                ...post,
-                replies: [
-                  ...post.replies,
-                  { id: crypto.randomUUID(), body, createdAt: new Date().toISOString() },
-                ],
-              });
-              if (saved !== false) setReply('');
-            }}
-          >
-            <label htmlFor={`reply-${post.id}`}>أضف ردك</label>
-            <textarea
-              id={`reply-${post.id}`}
-              required
-              maxLength={2000}
-              value={reply}
-              onChange={(e) => setReply(e.target.value)}
-              placeholder="شارك معلومة مفيدة أو اسأل للتوضيح…"
-            />
-            <button className="button" disabled={!reply.trim()} type="submit">
-              <Send size={16} />
-              {shared ? 'نشر الرد' : 'إضافة الرد محلياً'}
-            </button>
-          </form>
+          {readOnly ? (
+            <p className="inline-status">
+              للمشاركة بالردود سجّل دخولك من{' '}
+              <a href="/account" style={{ color: 'var(--green, #174b3b)', textDecoration: 'underline' }}>
+                صفحة الحساب
+              </a>
+              .
+            </p>
+          ) : (
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const body = reply.trim();
+                if (!body) return;
+                const saved = await onChange({
+                  ...post,
+                  replies: [
+                    ...post.replies,
+                    { id: crypto.randomUUID(), body, createdAt: new Date().toISOString() },
+                  ],
+                });
+                if (saved !== false) setReply('');
+              }}
+            >
+              <label htmlFor={`reply-${post.id}`}>أضف ردك</label>
+              <textarea
+                id={`reply-${post.id}`}
+                required
+                maxLength={2000}
+                value={reply}
+                onChange={(e) => setReply(e.target.value)}
+                placeholder="شارك معلومة مفيدة أو اسأل للتوضيح…"
+              />
+              <button className="button" disabled={!reply.trim()} type="submit">
+                <Send size={16} />
+                {shared ? 'نشر الرد' : 'إضافة الرد محلياً'}
+              </button>
+            </form>
+          )}
         </div>
       )}
     </article>

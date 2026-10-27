@@ -60,7 +60,7 @@ export function AccountPanel() {
       <UserRound size={32} />
       {user ? (
         <>
-          <h2>أهلاً بيك</h2>
+          <h2>أهلاً بيك يا زول</h2>
           <p dir="ltr">{user.email}</p>
           <form
             onSubmit={async (e) => {

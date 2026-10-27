@@ -1,16 +1,27 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
 
-export const metadata: Metadata = { title: 'الجمعيات' };
-export default function AssociationsPage() {
+import { contentRepository } from '@/lib/content';
+import { AssociationBrowser } from '@/components/associations/association-browser';
+export default async function Home() {
+  const guides = await contentRepository.listGuides();
   return (
-    <main className="shell page-heading">
-      <span className="eyebrow">الجمعيات</span>
-      <h1>انتقل إلى قسم الجمعيات</h1>
-      <p>هذا الرابط ينقلك إلى قسم الجمعيات في الصفحة الرئيسية.</p>
-      <Link className="button" href="/#associations">
-        فتح قسم الجمعيات
-      </Link>
-    </main>
+    <>
+     
+      <section
+        id="associations"
+        className="shell home-associations"
+        aria-labelledby="associations-title"
+      >
+        <div className="section-heading">
+          <div>
+               <span className="eyebrow"> مجتمعين نقف</span>
+            <h2> الجمعيات السودانية في المانيا </h2>
+            <p id="associations-title">
+              تعرّف على الجمعيات السودانية الألمانية، وابحث حسب المنطقة.
+            </p>
+          </div>
+        </div>
+        <AssociationBrowser />
+      </section>
+    </>
   );
 }

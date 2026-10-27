@@ -68,7 +68,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             </a>
           ))}
           <Link className="button" href="/dashboard">
-            ارجع لرحلتك <ArrowUpLeft size={18} />
+            ارجع لطريقك <ArrowUpLeft size={18} />
           </Link>
         </aside>
         <article className="article-body">

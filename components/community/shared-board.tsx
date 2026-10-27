@@ -2,9 +2,11 @@
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { User } from '@supabase/supabase-js';
-import { RefreshCw } from 'lucide-react';
+import { MessageCircle, RefreshCw, Users, Plus } from 'lucide-react';
+import { Icon } from '@/components/ui/icon';
 import { getSupabase } from '@/lib/supabase/client';
 import { communities, postKinds, communityCopy } from '@/config/community';
+
 import {
   listSharedDiscussions,
   publishDiscussion,
@@ -16,6 +18,7 @@ import { normalize } from '@/lib/search';
 import { DiscussionCard } from './discussion-card';
 export function SharedBoard() {
   const [user, setUser] = useState<User | null>(null);
+  const [composing, setComposing] = useState(false);
   const [posts, setPosts] = useState<Discussion[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -30,21 +33,15 @@ export function SharedBoard() {
   const [query, setQuery] = useState('');
   const [limit, setLimit] = useState(30);
   const generation = useRef(0);
+  // القراءة متاحة للجميع: نحمّل الموضوعات حتى بدون حساب
   const refresh = useCallback(async () => {
     const request = ++generation.current;
     try {
-      const { data, error: authError } = await getSupabase().auth.getUser();
+      const { data } = await getSupabase().auth.getUser();
       if (request !== generation.current) return;
       setError('');
-      if (authError || !data.user) {
-        setUser(null);
-        setPosts([]);
-        if (authError && authError.name !== 'AuthSessionMissingError')
-          setError('تعذّر التحقق من الحساب. حاول تحديث الصفحة.');
-        return;
-      }
-      setUser(data.user);
-      const rows = await listSharedDiscussions(data.user.id, limit);
+      setUser(data.user ?? null);
+      const rows = await listSharedDiscussions(data.user?.id ?? '', limit);
       if (request === generation.current) setPosts(rows);
     } catch {
       if (request === generation.current)
@@ -68,6 +65,7 @@ export function SharedBoard() {
         setUser(null);
         setPosts([]);
         setLoading(false);
+        void refresh(); // إعادة تحميل القراءة العامة بعد الخروج
       }
     });
     return () => {
@@ -92,18 +90,7 @@ export function SharedBoard() {
       setBusy(false);
     }
   }
-  if (loading) return <p role="status">جاري تحميل المجتمع…</p>;
-  if (!user)
-    return (
-      <div className="account-panel">
-        <h1>النقاش يبدأ بالتعارف.</h1>
-        <p>سجّل الدخول لقراءة موضوعات المجتمع والمشاركة فيها.</p>
-        {error && <p role="alert">{error}</p>}
-        <Link href="/account" className="button">
-          الدخول أو إنشاء حساب
-        </Link>
-      </div>
-    );
+  if (loading) return <p role="status">جاري تحميل الصفحة</p>;
   const visible = posts.filter(
     (p) =>
       (filter === 'all' || p.community === filter) &&
@@ -119,12 +106,13 @@ export function SharedBoard() {
           <p>{communityCopy.description}</p>
         </div>
         <Link href="/account" className="button">
-          حسابي
+          {user ? 'حسابي' : 'الدخول أو إنشاء حساب'}
         </Link>
       </div>
       <p className="preview-notice">
-        هذه مساحة مشتركة بين الأعضاء المسجّلين. يظهر اسم عرضك مع المشاركات والردود؛ لا تظهر بيانات
-        بريدك.
+        {user
+          ? 'هذه مساحة مشتركة بين الأعضاء المسجّلين. يظهر اسم عرضك مع المشاركات والردود؛ لا تظهر بيانات بريدك.'
+          : 'القراءة متاحة للجميع. للمشاركة بالموضوعات والردود والإعجاب سجّل دخولك مجاناً بالبريد الإلكتروني.'}
       </p>
       <div className="shared-toolbar">
         <button className="text-button" disabled={busy} onClick={() => void refresh()}>
@@ -140,11 +128,20 @@ export function SharedBoard() {
       )}
       <p role="status">{notice}</p>
       <div className="community-layout">
-        <aside className="community-sidebar">
-          <h2>المجتمعات</h2>
-          {[{ id: 'all', title: 'كل النقاشات' }, ...communities].map((c) => (
+                <aside className="community-sidebar">
+          <h2>
+            <Users size={20} /> المجتمعات
+          </h2>
+          <button aria-pressed={filter === 'all'} onClick={() => setFilter('all')}>
+            <MessageCircle size={20} />
+            <span>كل النقاشات</span>
+            <small>{posts.length}</small>
+          </button>
+          {communities.map((c) => (
             <button key={c.id} aria-pressed={filter === c.id} onClick={() => setFilter(c.id)}>
-              {c.title}
+              <Icon name={c.icon} size={21} />
+              <span>{c.title}</span>
+              <small>{posts.filter((p) => p.community === c.id).length}</small>
             </button>
           ))}
           <div className="community-rules">
@@ -157,76 +154,112 @@ export function SharedBoard() {
           </div>
         </aside>
         <div>
-          <form
-            className="compose-form"
-            onSubmit={async (e) => {
-              e.preventDefault();
-              if (
-                await mutate(() =>
-                  publishDiscussion({ title, body, community: group, kind }, user.id),
-                )
-              ) {
-                setTitle('');
-                setBody('');
-                setFilter('all');
-                setKindFilter('all');
-                setQuery('');
-              }
-            }}
-          >
-            <h2>اطرح سؤالاً أو شارك موضوعاً</h2>
-            <div className="compose-selects">
-              <label>
-                المجتمع
-                <select value={group} onChange={(e) => setGroup(e.target.value)}>
-                  {communities.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.title}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                نوع المشاركة
-                <select value={kind} onChange={(e) => setKind(e.target.value)}>
-                  {postKinds.map((k) => (
-                    <option key={k.id} value={k.id}>
-                      {k.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-            <label>
-              عنوان الموضوع
-              <input
-                required
-                maxLength={140}
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-            </label>
-            <label>
-              التفاصيل
-              <textarea
-                required
-                maxLength={5000}
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-              />
-            </label>
-            <button className="button" disabled={busy || !title.trim() || !body.trim()}>
-              {busy ? 'جاري الحفظ…' : 'نشر في المجتمع'}
-            </button>
-          </form>
-          <div className="filter-search">
-            <input
-              aria-label="ابحث في النقاشات"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="ابحث في الموضوعات المحمّلة…"
-            />
-          </div>
+          {/* شريط الأدوات: الزر + البحث في سطر واحد */}
+<div className="compose-toolbar">
+  {user && (
+    <button
+      className="button"
+      onClick={() => setComposing(!composing)}
+      aria-expanded={composing}
+    >
+      <Plus size={19} />
+      {composing ? 'إغلاق المسودة' : 'اطرح سؤالاً أو موضوعاً'}
+    </button>
+  )}
+  <div className="filter-search">
+    <input
+      aria-label="ابحث في النقاشات"
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      placeholder="ابحث في الموضوعات المحمّلة…"
+    />
+  </div>
+</div>
+
+{/* النموذج يظهر تحت الشريط عند الضغط */}
+
+                    {user && (
+            <>
+             
+              {composing && (
+                <form
+                  className="compose-form"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    if (
+                      await mutate(() =>
+                        publishDiscussion({ title, body, community: group, kind }, user.id),
+                      )
+                    ) {
+                      setTitle('');
+                      setBody('');
+                      setFilter('all');
+                      setKindFilter('all');
+                      setQuery('');
+                      setComposing(false);
+                    }
+                  }}
+                >
+                  <h2>اطرح سؤالاً أو شارك موضوعاً</h2>
+                  <div className="compose-selects">
+                    <label>
+                      المجتمع
+                      <select value={group} onChange={(e) => setGroup(e.target.value)}>
+                        {communities.map((c) => (
+                          <option key={c.id} value={c.id}>
+                            {c.title}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label>
+                      نوع المشاركة
+                      <select value={kind} onChange={(e) => setKind(e.target.value)}>
+                        {postKinds.map((k) => (
+                          <option key={k.id} value={k.id}>
+                            {k.label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+                  <label>
+                    عنوان الموضوع
+                    <input
+                      required
+                      maxLength={140}
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                    />
+                  </label>
+                  <label>
+                    التفاصيل
+                    <textarea
+                      required
+                      maxLength={5000}
+                      value={body}
+                      onChange={(e) => setBody(e.target.value)}
+                    />
+                  </label>
+                  <div className="compose-actions">
+                    <button className="button" disabled={busy || !title.trim() || !body.trim()}>
+                      {busy ? 'جاري الحفظ…' : 'نشر في المجتمع'}
+                    </button>
+                    <button
+                      type="button"
+                      className="text-button"
+                      onClick={() => setComposing(false)}
+                    >
+                      إغلاق
+                    </button>
+                  </div>
+                  <div className='filter'></div>
+                </form>
+              )}
+            </>
+          )}
+         
+          
           <div className="filter-list">
             {[{ id: 'all', plural: 'كل المشاركات' }, ...postKinds].map((k) => (
               <button
@@ -243,9 +276,10 @@ export function SharedBoard() {
             <fieldset disabled={busy} className="discussion-fieldset" key={post.id}>
               <DiscussionCard
                 shared
+                readOnly={!user}
                 post={post}
-                onChange={(after) => mutate(() => changeSharedDiscussion(post, after, user.id))}
-                onDelete={() => void mutate(() => deleteSharedDiscussion(post.id, user.id))}
+                onChange={(after) => mutate(() => changeSharedDiscussion(post, after, user!.id))}
+                onDelete={() => void mutate(() => deleteSharedDiscussion(post.id, user!.id))}
               />
             </fieldset>
           ))}

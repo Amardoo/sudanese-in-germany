@@ -108,7 +108,7 @@ export default async function Home() {
             <h2>أدلة لبداية أوضح</h2>
           </div>
           <Link href="/guides">
-            استكشف كل الأدلة <ArrowLeft size={19} />
+               تصفح كل المقالات <ArrowLeft size={19} />
           </Link>
         </div>
         <div className="guide-grid">
@@ -124,30 +124,16 @@ export default async function Home() {
             <BookOpen size={35} />
           </span>
           <div>
-            <h2>المعلومة بداية. الخطوة بتعمل الفرق.</h2>
-            <p>اجمع خطواتك في «مساري»، وارجع لها كل ما تحتاج.</p>
+            <span className="eyebrow"> مجتمعين نقف</span>
+            <h2>  الجمعيات السودانية في المانيا </h2>
+            <p>تعرّف على الجمعيات السودانية الألمانية.</p>
           </div>
-          <Link className="button" href="/dashboard">
-            تصفح مساري <ArrowLeft size={19} />
+          <Link className="button" href="/associations">
+            استكشف الجمعيات السودانية   <ArrowLeft size={19} />
           </Link>
         </div>
       </section>
-      <section
-        id="associations"
-        className="shell home-associations"
-        aria-labelledby="associations-title"
-      >
-        <div className="section-heading">
-          <div>
-               <span className="eyebrow"> مجتمعين نقف</span>
-            <h2> الجمعيات السودانية في المانيا </h2>
-            <p id="associations-title">
-              تعرّف على الجمعيات السودانية الألمانية، وابحث حسب المنطقة.
-            </p>
-          </div>
-        </div>
-        <AssociationBrowser />
-      </section>
+    
     </>
   );
 }

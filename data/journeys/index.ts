@@ -3,7 +3,7 @@ export const journeys: Journey[] = [
   {
     id: 'student',
     title: 'أنا طالب',
-    heading: 'رحلتك للدراسة في ألمانيا',
+    heading: 'طريقك للدراسة في ألمانيا',
     description: 'من اختيار الجامعة إلى أول يوم دراسة',
     icon: 'student',
     color: 'blue',
@@ -49,7 +49,7 @@ export const journeys: Journey[] = [
   {
     id: 'doctor',
     title: 'أنا طبيب',
-    heading: 'رحلتك للعمل كطبيب',
+    heading: 'طريقك للعمل كطبيب',
     description: 'المعادلة، اللغة الطبية، الترخيص، وبداية العمل',
     icon: 'doctor',
     color: 'rose',
@@ -70,7 +70,7 @@ export const journeys: Journey[] = [
         id: 'language',
         title: 'تحديد هدف اللغة',
         description: 'دوّن متطلبات اللغة في البرامج التي اخترتها.',
-        guide: 'german',
+        guide: 'german-for-doctors',
       },
       {
         id: 'visa',
@@ -102,7 +102,7 @@ export const journeys: Journey[] = [
   {
     id: 'worker',
     title: 'أبحث عن عمل',
-    heading: 'رحلتك إلى فرصة جديدة',
+    heading: 'طريقك إلى فرصة جديدة',
     description: 'ملف أقوى، بحث أوضح، وفرصة أنسب',
     icon: 'worker',
     color: 'amber',

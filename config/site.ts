@@ -5,7 +5,7 @@ export const site = {
   eyebrow: 'من السودان إلى ألمانيا، خطوة بخطوة',
   heroTitle: 'بداية جديدة.',
   heroAccent: 'وطريق أوضح.',
-  mobileHeroTitle: 'كل ما تحتاجه في مكان واحد',
+  mobileHeroTitle: 'دليل السودانيين في المانيا     ',
   heroDescription:
     'للدراسة، للعمل، أو لحياة جديدة — اجمع المعلومات التي تحتاجها، ورتّب خطواتك في مكان واحد.',
   searchPlaceholder: ' اللغة، الجامعة، السكن…',

@@ -54,7 +54,7 @@ export function Dashboard({ initialPath }: { initialPath?: string }) {
   if (!loaded)
     return (
       <div className="shell section" role="status">
-        نجهّز رحلتك…
+        نجهّز طريقك…
       </div>
     );
   return (
@@ -62,7 +62,7 @@ export function Dashboard({ initialPath }: { initialPath?: string }) {
       <div className="page-heading">
         <span className="eyebrow">مساحة لخطوتك القادمة</span>
         <h1>
-          أهلاً بيك في رحلتك<span className="heading-dot">.</span>
+          أهلاً بيك يا زول في مسارك<span className="heading-dot">.</span>
         </h1>
         <p>لنبدأ خطوة بخطوة. اختر مسارك وتابع ما أنجزته.</p>
       </div>
@@ -88,7 +88,7 @@ export function Dashboard({ initialPath }: { initialPath?: string }) {
           </div>
           <div className="local-note">
             <BookOpen size={23} />
-            <h3>رحلتك، على راحتك</h3>
+            <h3>مسارك على راحتك</h3>
             <p>تقدّمك محفوظ في هذا المتصفح على هذا الجهاز. تقدر تغيّر المسار وترجع له في أي وقت.</p>
           </div>
         </aside>

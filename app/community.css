@@ -667,3 +667,31 @@ textarea:focus-visible {
     font-size: 15px;
   }
 }
+
+/* على الجوال: يبقيان بجانب بعضهما مع تقليص حقل البحث */
+
+.compose-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 1px;
+}
+.compose-toolbar .button {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.compose-toolbar .filter-search {
+  flex: 1;
+  max-width: none;
+  margin-bottom: 0;
+}
+/* على الجوال: يبقيان بجانب بعضهما مع تقليص حقل البحث */
+@media (max-width: 760px) {
+  .compose-toolbar {
+    gap: 10px;
+  }
+  .compose-toolbar .button {
+    font-size: 13px;
+    padding: 20px 22px;
+  }
+}

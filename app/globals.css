@@ -12,6 +12,7 @@
   --paper: #f7f8f4;
   --gold: #f0d995;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -144,7 +145,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 18px;
-  padding: 13px 23px;
+  padding: 19px 14px;
   border-radius: 9px;
   background: var(--green);
   color: #fff;
@@ -357,6 +358,134 @@ button {
   font-size: 11px;
   color: #c1d0c0;
   margin-top: 17px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   صفحات قانونية: /imprint /privacy /terms
+   أضف هذا المقطع إلى نهاية app/globals.css
+   ═══════════════════════════════════════════════════════════ */
+.legal-page .page-heading {
+  margin-bottom: 2rem;
+}
+
+.legal-doc {
+  max-width: 46rem;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #e7e2d9);
+  border-radius: 1rem;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.9;
+}
+
+.legal-doc h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.legal-doc h2:first-child {
+  margin-top: 0;
+}
+
+.legal-doc h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.25rem;
+}
+
+.legal-doc p,
+.legal-doc li {
+  color: var(--muted, #5b574f);
+}
+
+.legal-doc ul {
+  padding-inline-start: 1.25rem;
+  display: grid;
+  gap: 0.375rem;
+}
+
+.legal-doc a {
+  color: var(--accent, #2f6f4f);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal-doc code {
+  background: var(--chip, #f1ede5);
+  border-radius: 0.375rem;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.875em;
+}
+
+.legal-updated {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   صفحات قانونية: /social 
+   أضف هذا المقطع إلى نهاية app/globals.css
+   ═══════════════════════════════════════════════════════════ */
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: #333333;
+  font-size: 20px;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.social-icons a:hover {
+  transform: translateY(-3px);
+}
+
+.social-icons a:nth-child(1):hover {
+  background-color: #1877f2;
+}
+
+.social-icons a:nth-child(2):hover {
+  background-color: #25d366;
+}
+
+.social-icons a:nth-child(3):hover {
+  background-color: #229ed9;
+}
+
+.social-icons a:nth-child(4):hover {
+  background-color: #ff0000;
+}
+
+.social-icons a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
 }
 .category-strip {
   background: #fff;
@@ -1486,4 +1615,56 @@ progress::-moz-progress-bar {
   * {
     transition: none !important;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   شريط الموافقة على الخصوصية (Consent Banner)
+   أضف هذا المقطع إلى نهاية app/globals.css
+   ═══════════════════════════════════════════════════════════ */
+.consent-banner {
+  position: fixed;
+  inset-inline: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  max-width: 52rem;
+  margin-inline: auto;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #e7e2d9);
+  border-radius: 0.875rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.12);
+}
+
+.consent-banner p {
+  flex: 1 1 18rem;
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--muted, #5b574f);
+}
+
+.consent-banner a {
+  color: var(--accent, #2f6f4f);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.consent-actions {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.consent-actions .button {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.button-ghost {
+  background: transparent;
+  border: 1px solid var(--border, #e7e2d9);
+  color: var(--muted, #5b574f);
 }

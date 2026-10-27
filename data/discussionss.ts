@@ -11,7 +11,6 @@ export const sampleDiscussions: Discussion[] = [
    title: 'كيف تقدمت للحصول على  تأشيرة الكترونية سعودية  E-visa باقامة طالب',
    body: 'كيف سارت الإجراءات. اذكر نوع الوثيقة وتاريخ التجربة فقط،.',
    createdAt: '2026-10-05T09:00:00Z',
-   sample: true,
    replies: [],
    liked: false,
 },

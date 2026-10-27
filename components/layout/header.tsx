@@ -9,7 +9,7 @@ export function Brand() {
     <Link href="/" className="brand" aria-label="سودانيين في ألمانيا — الرئيسية">
       <span className="brand-mark">س</span>
       <span>
-        سودانيين <small>في ألمانيا</small>
+        سودانيين <small>فــي ألمانيــا</small>
       </span>
     </Link>
   );
@@ -36,8 +36,8 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <Link className="button small desktop-cta" href="/dashboard">
-          ابدأ رحلتك <ArrowUpLeft size={18} />
+        <Link className="button small desktop-cta" href="/account">
+          انضم الينا <ArrowUpLeft size={18} />
         </Link>
         <button
           className="menu-button"
@@ -59,9 +59,20 @@ export function Header() {
               aria-current={path === n.href ? 'page' : undefined}
             >
               {n.label}
+              
             </Link>
+            
           ))}
+          
+    <Link
+      className="button small mobile-cta"
+      href="/account"
+      onClick={() => setOpen(false)}
+    >
+      انضم الينا <ArrowUpLeft size={18} />
+    </Link>
         </nav>
+        
       )}
     </header>
   );

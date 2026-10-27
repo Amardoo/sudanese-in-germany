@@ -19,6 +19,7 @@ export function AssociationBrowser() {
     <>
       <div className="association-grid">
         {associations.map((a) => (
+        
           <article className="association-card" key={a.id}>
             <span className="icon-tile">
               <Building2 size={27} />
@@ -26,7 +27,7 @@ export function AssociationBrowser() {
             <div className="association-content">
               <h3>{a.name}</h3>
               <p>
-                {a.focus}  · {a.region}
+                {}  · {a.region}  · {a.description} · {a.address}
               </p>
             </div>
             <div className="association-links">
