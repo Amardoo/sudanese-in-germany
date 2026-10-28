@@ -17,7 +17,7 @@ export async function deletePostAsAdmin(postId: string) {
     { cookies: { getAll: () => cookieStore.getAll() } }
   )
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user || user.email !== 'm3maral18@gmail.com') {
+  if (!user || user.email !== '#####') {
     return { success: false, error: 'غير مصرح' }
   }
 
